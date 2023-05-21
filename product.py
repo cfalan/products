@@ -266,25 +266,26 @@ print(comment_good_2[0])
 '''
 
 cart = []
+porduct = []
 
 while True:
-	product = input('請輸入產品名稱： ')
-	if product == 'q':
+	name = input('請輸入產品名稱： ')
+	if name == 'q':
 		break
 	price = input('產品的價格： ')
-	# p = []
-	# p.append(product)
-	# p.append(price)
-	p = [product, price]
-	cart.append(p)
+	# porduct = []
+	# porduct.append(name)
+	# porduct.append(price)
+	porduct = [name, price]
+	cart.append(porduct)
 
 print(cart)
 
-product[0][0]
+#print(name[0][0])
 
 
-for prodcut in cart:
-	print('產品名稱：', p[0], '（價格：', p[1], '）')
+for porduct in cart:
+	print('產品名稱：', porduct[0], '（價格：', porduct[1], '）')
 
 
 
