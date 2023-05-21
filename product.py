@@ -284,7 +284,7 @@ product[0][0]
 
 
 for prodcut in cart:
-	print('產品：', p[0], '- 價格：', p[1])
+	print('產品名稱：', p[0], '（價格：', p[1], '）')
 
 
 
@@ -299,6 +299,7 @@ python3 product.py
 
 #更新版本用
 git add product.py
-git commit -m "product first commit"
+git commit -m "分開清單中的小清單
+再印出小清單資訊"
 git push origin main
 '''
