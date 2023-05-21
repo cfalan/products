@@ -282,9 +282,15 @@ print(cart)
 
 product[0][0]
 
-print('你的購物車有以下產品')
-for cart_list in cart:
-	print(cart_list)
+
+for prodcut in cart:
+	print('產品：', p[0], '- 價格：', p[1])
+
+
+
+# print('你的購物車有以下產品')
+# for cart_list in cart:
+# 	print(cart_list)
 	
 
 
