@@ -312,7 +312,6 @@ python3 product.py
 
 #更新版本用
 git add product.py
-git commit -m "更正好架構的名稱
-再印出小清單資訊"
+git commit -m "加入編碼方式"
 git push origin main
 '''
