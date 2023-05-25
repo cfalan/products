@@ -265,35 +265,94 @@ print(comment_good_2[0])
 # print(comment_100_2[1])
 '''
 
-# cart = []
-cart = [['ramen', '120'], ['pasta', '220']]
-porduct = []
+# # cart = []
+# cart = [['ramen', '120'], ['pasta', '220']]
+# porduct = []
 
-'''
-while True:
-	name = input('請輸入產品名稱： ')
-	if name == 'q':
-		break
-	price = input('產品的價格： ')
-	# porduct = []
-	# porduct.append(name)
-	# porduct.append(price)
-	porduct = [name, price]
-	cart.append(porduct)
-'''
+# '''
+# while True:
+# 	name = input('請輸入產品名稱： ')
+# 	if name == 'q':
+# 		break
+# 	price = input('產品的價格： ')
+# 	# porduct = []
+# 	# porduct.append(name)
+# 	# porduct.append(price)
+# 	porduct = [name, price]
+# 	cart.append(porduct)
+# '''
+# print(cart)
+
+# # print(name[0][0])
+
+
+# print('你的購物車有以下產品')
+# for porduct in cart:
+# 	print('產品名稱：', porduct[0], '（價格：', porduct[1], '）')
+
+# with open('product.csv', 'w', encoding='utf-8') as x:
+# 	x.write('商品, 價格\n')
+# 	for product in cart:
+# 		x.write(product[0] + ',' + product[1] + '\n')
+
+# import time
+
+# print('新一行\n\n')
+
+# time.sleep(0.1)
+
+# print('新一行\n\n')
+
+# time.sleep(0.1)
+
+
+# 開始讀取
+
+cart = []
+
+with open('product.csv', 'r', encoding='utf-8') as y:
+	for line in y:
+		if '商' in line:
+			continue
+		'''product = line.strip().split(',') 
+		print(product)
+		time.sleep(0.1)
+		name = product[0]
+		print(name)'''
+		product = name, price = line.strip().split(',')
+		# print(product)
+		# print(name)
+		cart.append(product)
+
 print(cart)
 
-# print(name[0][0])
+# 開始寫新資料
+
+while True:
+	name = input('\nplease input product:')
+	if name == 'q':
+		break
+	price = input('\nplease input price:')
+	product = [name, price]
+	cart.append(product)
+	# product = []
+	time.sleep(0.1)
+
+print(cart)
 
 
-print('你的購物車有以下產品')
-for porduct in cart:
-	print('產品名稱：', porduct[0], '（價格：', porduct[1], '）')
+# 印出購物車
 
-with open('product.csv', 'w', encoding='utf-8') as x:
+for product in cart:
+	print(product[0], '的價格是：', product[1])
+
+# 開始寫入檔案
+
+with open('product.txt', 'w', encoding='utf-8') as x:
 	x.write('商品, 價格\n')
 	for product in cart:
-		x.write(product[0] + ',' + product[1] + '\n')
+		x.write(product[0]+','+product[1]+'\n')
+		print('已記錄'+ product[0]+ ', 價格是'+ product[1]+ '\n')
 
 
 # data = [1, 3, 5, 7, 9] # 清單中裝著一些整數
@@ -312,6 +371,6 @@ python3 product.py
 
 #更新版本用
 git add product.py
-git commit -m "加入編碼方式"
+git commit -m "加入讀取，輸入，印出，寫入"
 git push origin main
 '''
