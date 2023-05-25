@@ -306,25 +306,38 @@ print(comment_good_2[0])
 # time.sleep(0.1)
 
 
-# 開始讀取
 
+import os
+
+file = 'product.csv'
 cart = []
 
-with open('product.csv', 'r', encoding='utf-8') as y:
-	for line in y:
-		if '商' in line:
-			continue
-		'''product = line.strip().split(',') 
-		print(product)
-		time.sleep(0.1)
-		name = product[0]
-		print(name)'''
-		product = name, price = line.strip().split(',')
-		# print(product)
-		# print(name)
-		cart.append(product)
 
-print(cart)
+if os.path.isfile(file):
+	print('讀取' + file)
+
+	with open(file, 'r', encoding='utf-8') as y:
+		for line in y:
+			if '商' in line:
+				continue
+			'''product = line.strip().split(',') 
+			print(product)
+			time.sleep(0.1)
+			name = product[0]
+			print(name)'''
+			product = name, price = line.strip().split(',')
+			# print(product)
+			# print(name)
+			cart.append(product)
+
+	print(cart)
+else:
+	print('沒有先前記錄')
+
+time.sleep(1)
+
+# 開始讀取
+
 
 # 開始寫新資料
 
@@ -348,7 +361,7 @@ for product in cart:
 
 # 開始寫入檔案
 
-with open('product.txt', 'w', encoding='utf-8') as x:
+with open('product.csv', 'w', encoding='utf-8') as x:
 	x.write('商品, 價格\n')
 	for product in cart:
 		x.write(product[0]+','+product[1]+'\n')
@@ -371,6 +384,6 @@ python3 product.py
 
 #更新版本用
 git add product.py
-git commit -m "加入讀取，輸入，印出，寫入"
+git commit -m "加入check file 是否存在"
 git push origin main
 '''
