@@ -265,9 +265,11 @@ print(comment_good_2[0])
 # print(comment_100_2[1])
 '''
 
-cart = []
+# cart = []
+cart = [['ramen', '120'], ['pasta', '220']]
 porduct = []
 
+'''
 while True:
 	name = input('請輸入產品名稱： ')
 	if name == 'q':
@@ -278,21 +280,31 @@ while True:
 	# porduct.append(price)
 	porduct = [name, price]
 	cart.append(porduct)
-
+'''
 print(cart)
 
-#print(name[0][0])
+# print(name[0][0])
 
 
+print('你的購物車有以下產品')
 for porduct in cart:
 	print('產品名稱：', porduct[0], '（價格：', porduct[1], '）')
 
+with open('product.csv', 'w', encoding='utf-8') as x:
+	x.write('商品, 價格\n')
+	for product in cart:
+		x.write(product[0] + ',' + product[1] + '\n')
 
 
-# print('你的購物車有以下產品')
-# for cart_list in cart:
-# 	print(cart_list)
-	
+# data = [1, 3, 5, 7, 9] # 清單中裝著一些整數
+# # 請開始寫"寫入檔案"的程式碼
+
+# with open('test.csv', 'w') as x:
+#     for y in data:
+#     	y = str(y)
+#     	x.write(y + '\n')
+
+	  
 
 
 '''
@@ -300,7 +312,7 @@ python3 product.py
 
 #更新版本用
 git add product.py
-git commit -m "分開清單中的小清單
+git commit -m "更正好架構的名稱
 再印出小清單資訊"
 git push origin main
 '''
