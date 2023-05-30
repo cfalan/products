@@ -307,15 +307,88 @@ print(comment_good_2[0])
 
 
 
+# import os
+
+# file = 'product.csv'
+# cart = []
+
+
+# if os.path.isfile(file):
+# 	print('讀取' + file)
+
+# 	with open(file, 'r', encoding='utf-8') as y:
+# 		for line in y:
+# 			if '商' in line:
+# 				continue
+# 			'''product = line.strip().split(',') 
+# 			print(product)
+# 			time.sleep(0.1)
+# 			name = product[0]
+# 			print(name)'''
+# 			product = name, price = line.strip().split(',')
+# 			# print(product)
+# 			# print(name)
+# 			cart.append(product)
+
+# 	print(cart)
+# else:
+# 	print('沒有先前記錄')
+
+# time.sleep(1)
+
+# # 開始讀取
+
+
+# # 開始寫新資料
+
+# while True:
+# 	name = input('\nplease input product:')
+# 	if name == 'q':
+# 		break
+# 	price = input('\nplease input price:')
+# 	product = [name, price]
+# 	cart.append(product)
+# 	# product = []
+# 	time.sleep(0.1)
+
+# print(cart)
+
+
+# # 印出購物車
+
+# for product in cart:
+# 	print(product[0], '的價格是：', product[1])
+
+# # 開始寫入檔案
+
+# with open('product.csv', 'w', encoding='utf-8') as x:
+# 	x.write('商品, 價格\n')
+# 	for product in cart:
+# 		x.write(product[0]+','+product[1]+'\n')
+# 		print('已記錄'+ product[0]+ ', 價格是'+ product[1]+ '\n')
+
+
+# # data = [1, 3, 5, 7, 9] # 清單中裝著一些整數
+# # # 請開始寫"寫入檔案"的程式碼
+
+# # with open('test.csv', 'w') as x:
+# #     for y in data:
+# #     	y = str(y)
+# #     	x.write(y + '\n')
+
+	  
+# -----------------------------------------
+
+
 import os
 
-file = 'product.csv'
-cart = []
+# 用function 形式寫的話，這兩個不能再放在外面
+# file = 'product.csv'
+# cart = []
 
 
-if os.path.isfile(file):
-	print('讀取' + file)
-
+#開始讀取檔案
+def read_file(file):
 	with open(file, 'r', encoding='utf-8') as y:
 		for line in y:
 			if '商' in line:
@@ -329,43 +402,68 @@ if os.path.isfile(file):
 			# print(product)
 			# print(name)
 			cart.append(product)
-
 	print(cart)
-else:
-	print('沒有先前記錄')
+	return cart
+
+
+
+# 檢查有冇檔案
+def check_file(file):
+	if os.path.isfile(file):
+		print('讀取' + file)
+		return True
+	else:
+		print('沒有先前記錄')
+		return False
+	
 
 time.sleep(1)
 
-# 開始讀取
-
-
 # 開始寫新資料
+def user_input(cart):
+	while True:
+		name = input('\nplease input product:')
+		if name == 'q':
+			break
+		price = input('\nplease input price:')
+		product = [name, price]
+		cart.append(product)
+		# product = []
+		time.sleep(0.1)
 
-while True:
-	name = input('\nplease input product:')
-	if name == 'q':
-		break
-	price = input('\nplease input price:')
-	product = [name, price]
-	cart.append(product)
-	# product = []
-	time.sleep(0.1)
-
-print(cart)
-
+	print(cart)
+	return(cart)
 
 # 印出購物車
-
-for product in cart:
-	print(product[0], '的價格是：', product[1])
+def print_product(cart):
+	for product in cart:
+		print(product[0], '的價格是：', product[1])
 
 # 開始寫入檔案
+def write_file(file, cart):
 
-with open('product.csv', 'w', encoding='utf-8') as x:
-	x.write('商品, 價格\n')
-	for product in cart:
-		x.write(product[0]+','+product[1]+'\n')
-		print('已記錄'+ product[0]+ ', 價格是'+ product[1]+ '\n')
+	with open(file, 'w', encoding='utf-8') as x:
+		x.write('商品, 價格\n') #這個是column title
+		for product in cart:
+			x.write(product[0]+','+product[1]+'\n')
+			print('已記錄'+ product[0]+ ', 價格是'+ product[1]+ '\n')
+
+
+
+
+
+def main():
+	file = 'product.csv'
+	if check_file(file):
+		cart = read_file(file)
+	else:
+		print('haha')
+	cart = user_input(cart)
+	print_product(cart)
+	write_file(file, cart)
+
+cart = []
+main() 
 
 
 # data = [1, 3, 5, 7, 9] # 清單中裝著一些整數
@@ -375,9 +473,6 @@ with open('product.csv', 'w', encoding='utf-8') as x:
 #     for y in data:
 #     	y = str(y)
 #     	x.write(y + '\n')
-
-	  
-
 
 '''
 python3 product.py
